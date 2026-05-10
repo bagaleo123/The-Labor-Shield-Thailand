@@ -12,11 +12,14 @@ const indexRoute = createRoute({
 
 const routeTree = rootRoute.addChildren([indexRoute])
 
-// Эта функция — то, что ищет ошибка "getRouter is not exported"
 export function createRouter() {
-  return createTanStackRouter({ routeTree })
+  return createTanStackRouter({ 
+    routeTree,
+    defaultPreload: 'intent',
+  })
 }
 
+// Это обязательно для TanStack Start
 export const getRouter = createRouter;
 
 declare module '@tanstack/react-router' {
