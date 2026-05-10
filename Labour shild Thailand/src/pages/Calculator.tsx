@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Calculator, TriangleAlert as AlertTriangle, CircleCheck as CheckCircle, Info, ChevronDown } from 'lucide-react';
+import { Calculator, AlertTriangle, CheckCircle, Info, ChevronDown } from 'lucide-react';;
 import { calculateSeverance, type DismissalReason } from '../lib/laborLaw';
 import { useLang } from '../lib/LanguageContext';
 
