@@ -1,6 +1,7 @@
-import { Shield, Calculator, FileSearch, BookOpen, FileText, ChevronRight, CheckCircle, AlertTriangle, Scale, Globe } from 'lucide-react';
+import { Shield, Calculator, FileSearch, BookOpen, FileText, ChevronRight, CheckCircle, AlertTriangle, Scale, Globe, Clock, Lock, MapPin } from 'lucide-react';
+import { useLang } from '../lib/LanguageContext';
 
-type Page = 'home' | 'calculator' | 'scanner' | 'guide' | 'documents';
+type Page = 'home' | 'calculator' | 'scanner' | 'guide' | 'documents' | 'ot' | 'evidence' | 'map';
 
 interface HomeProps {
   onNavigate: (page: Page) => void;
@@ -19,9 +20,17 @@ const FEATURES = [
     page: 'scanner' as Page,
     icon: <FileSearch size={24} className="text-red-400" />,
     title: 'Contract Scanner',
-    description: 'Paste your employment contract. Our scanner flags illegal clauses, missing protections, and red flags instantly.',
+    description: 'Upload or paste your employment contract. Flags illegal clauses, missing protections, and red flags instantly.',
     badge: 'Instant Analysis',
     badgeColor: 'bg-red-900/50 text-red-300 border-red-700/50',
+  },
+  {
+    page: 'ot' as Page,
+    icon: <Clock size={24} className="text-cyan-400" />,
+    title: 'OT & Tax Calculator',
+    description: 'Calculate overtime (1.5x/2x/3x), public holiday pay, SSO contributions, and estimated personal income tax.',
+    badge: 'Min Wage 2026',
+    badgeColor: 'bg-cyan-900/50 text-cyan-300 border-cyan-700/50',
   },
   {
     page: 'guide' as Page,
@@ -35,9 +44,25 @@ const FEATURES = [
     page: 'documents' as Page,
     icon: <FileText size={24} className="text-amber-400" />,
     title: 'Document Generator',
-    description: 'Generate a formal Letter of Inquiry to your HR department in both English and Legal Thai.',
+    description: 'Generate formal demand letters in both English and Legal Thai, ready to send to HR or court.',
     badge: 'Bilingual',
     badgeColor: 'bg-amber-900/50 text-amber-300 border-amber-700/50',
+  },
+  {
+    page: 'evidence' as Page,
+    icon: <Lock size={24} className="text-teal-400" />,
+    title: 'Evidence Locker',
+    description: 'Securely upload and cryptographically timestamp your pay slips, screenshots, and documents for court.',
+    badge: 'SHA-256 Sealed',
+    badgeColor: 'bg-teal-900/50 text-teal-300 border-teal-700/50',
+  },
+  {
+    page: 'map' as Page,
+    icon: <MapPin size={24} className="text-rose-400" />,
+    title: 'Justice Map',
+    description: 'Find DLPW offices in Bangkok, Phuket, Pattaya, and Chiang Mai with GPS links and filing checklists.',
+    badge: 'GPS Locations',
+    badgeColor: 'bg-rose-900/50 text-rose-300 border-rose-700/50',
   },
 ];
 
@@ -51,6 +76,7 @@ const RIGHTS = [
 ];
 
 export default function Home({ onNavigate }: HomeProps) {
+  const { t } = useLang();
   return (
     <div className="min-h-screen">
       {/* Hero */}
@@ -77,13 +103,13 @@ export default function Home({ onNavigate }: HomeProps) {
             </div>
           </div>
           <h1 className="text-4xl md:text-6xl font-bold text-white mb-4 leading-tight" style={{ fontFamily: 'Playfair Display, serif' }}>
-            The Labor Shield
+            {t('heroTitle')}
           </h1>
           <p className="text-xl md:text-2xl text-blue-200 font-light mb-3">
-            Protect your rights in the Land of Smiles.
+            {t('heroSub')}
           </p>
           <p className="text-slate-300 text-base md:text-lg max-w-2xl mx-auto mb-10 leading-relaxed">
-            A free legal-tech tool for foreign workers in Thailand. Know what you're owed, scan your contract for illegal clauses, and take action with confidence.
+            {t('heroBody')}
           </p>
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
             <button
@@ -91,7 +117,7 @@ export default function Home({ onNavigate }: HomeProps) {
               className="inline-flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-500 text-white font-semibold px-8 py-3.5 rounded-xl transition-all duration-200 shadow-lg shadow-blue-900/40 hover:shadow-blue-800/50 hover:-translate-y-0.5"
             >
               <Calculator size={18} />
-              Calculate My Rights
+              {t('calcBtn')}
               <ChevronRight size={16} />
             </button>
             <button
@@ -99,7 +125,7 @@ export default function Home({ onNavigate }: HomeProps) {
               className="inline-flex items-center justify-center gap-2 bg-white/10 hover:bg-white/15 border border-white/20 text-white font-semibold px-8 py-3.5 rounded-xl transition-all duration-200 hover:-translate-y-0.5"
             >
               <FileSearch size={18} />
-              Scan My Contract
+              {t('scanBtn')}
             </button>
           </div>
         </div>
@@ -110,7 +136,7 @@ export default function Home({ onNavigate }: HomeProps) {
         <div className="max-w-4xl mx-auto">
           <div className="flex items-center gap-3 mb-6">
             <Scale size={20} className="text-blue-400" />
-            <h2 className="text-white font-bold text-lg">Your Statutory Rights at a Glance</h2>
+            <h2 className="text-white font-bold text-lg">{t('rightsTitle')}</h2>
             <span className="bg-blue-900/50 text-blue-300 border border-blue-700/50 text-xs font-medium px-2 py-0.5 rounded-full">2026</span>
           </div>
           <div className="grid sm:grid-cols-2 gap-3">
@@ -129,13 +155,13 @@ export default function Home({ onNavigate }: HomeProps) {
         <div className="max-w-5xl mx-auto">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold text-white mb-3" style={{ fontFamily: 'Playfair Display, serif' }}>
-              Four Tools. One Mission.
+              {t('fourTools')}
             </h2>
             <p className="text-slate-400 max-w-xl mx-auto">
-              Everything you need to understand, protect, and enforce your rights as a foreign worker in Thailand.
+              {t('fourToolsSub')}
             </p>
           </div>
-          <div className="grid sm:grid-cols-2 gap-5">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {FEATURES.map(({ page, icon, title, description, badge, badgeColor }) => (
               <button
                 key={page}
@@ -150,10 +176,10 @@ export default function Home({ onNavigate }: HomeProps) {
                     {badge}
                   </span>
                 </div>
-                <h3 className="text-white font-bold text-lg mb-2">{title}</h3>
+                <h3 className="text-white font-bold text-base mb-2">{title}</h3>
                 <p className="text-slate-400 text-sm leading-relaxed mb-4">{description}</p>
                 <div className="flex items-center gap-1 text-blue-400 text-sm font-medium group-hover:gap-2 transition-all duration-200">
-                  Open Tool <ChevronRight size={14} />
+                  {t('openTool')} <ChevronRight size={14} />
                 </div>
               </button>
             ))}

@@ -1,6 +1,7 @@
 import { useState } from 'react';
-import { Calculator, AlertTriangle, CheckCircle, Info, ChevronDown } from 'lucide-react';
+import { Calculator, TriangleAlert as AlertTriangle, CircleCheck as CheckCircle, Info, ChevronDown } from 'lucide-react';
 import { calculateSeverance, type DismissalReason } from '../lib/laborLaw';
+import { useLang } from '../lib/LanguageContext';
 
 const DISMISSAL_REASONS: { value: DismissalReason; label: string; desc: string }[] = [
   { value: 'redundancy', label: 'Redundancy / Position Eliminated', desc: 'Your role was made redundant' },
@@ -17,6 +18,7 @@ function formatThb(amount: number): string {
 }
 
 export default function CalculatorPage() {
+  const { t } = useLang();
   const [salary, setSalary] = useState('');
   const [startDate, setStartDate] = useState('');
   const [endDate, setEndDate] = useState(new Date().toISOString().split('T')[0]);
@@ -65,9 +67,9 @@ export default function CalculatorPage() {
             <Calculator size={28} className="text-blue-400" />
           </div>
           <h1 className="text-3xl font-bold text-white mb-2" style={{ fontFamily: 'Playfair Display, serif' }}>
-            Severance Calculator
+            {t('calcTitle')}
           </h1>
-          <p className="text-slate-400">Calculate what your employer legally owes you under Thai Labor Law 2026.</p>
+          <p className="text-slate-400">{t('calcSub')}</p>
         </div>
 
         <div className="bg-slate-900 border border-slate-800 rounded-2xl p-6 md:p-8 mb-6">
