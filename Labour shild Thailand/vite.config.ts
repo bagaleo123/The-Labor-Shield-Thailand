@@ -1,17 +1,17 @@
 import { defineConfig } from "vite";
-import { tanstackRouterVite } from "@tanstack/router-plugin/vite";
+import { TanStackRouterVite } from "@tanstack/router-plugin/vite";
 import react from "@vitejs/plugin-react";
 import tsconfigPaths from "vite-tsconfig-paths";
 
 export default defineConfig({
   plugins: [
-    tanstackRouterVite(),
+    // В новых версиях плагин называется именно так
+    TanStackRouterVite(),
     react(),
     tsconfigPaths(),
   ],
   build: {
     outDir: 'dist',
-    // Это важно для Render, чтобы он видел выходные файлы
     emptyOutDir: true,
   }
 });
