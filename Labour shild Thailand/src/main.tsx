@@ -6,8 +6,11 @@ import './index.css'
 
 const router = createRouter()
 
-createRoot(document.getElementById('root')!).render(
-  <StrictMode>
-    <StartClient router={router} />
-  </StrictMode>,
-)
+const rootElement = document.getElementById('root')
+if (rootElement && !rootElement.innerHTML) {
+  createRoot(rootElement).render(
+    <StrictMode>
+      <StartClient router={router} />
+    </StrictMode>,
+  )
+}
