@@ -1,7 +1,6 @@
 import { createRouter as createTanStackRouter, createRootRoute, createRoute } from '@tanstack/react-router'
 import App from './App'
 
-// Создаем базовый маршрут, который просто показывает твое приложение
 const rootRoute = createRootRoute({
   component: App,
 })
@@ -13,9 +12,12 @@ const indexRoute = createRoute({
 
 const routeTree = rootRoute.addChildren([indexRoute])
 
+// Эта функция — то, что ищет ошибка "getRouter is not exported"
 export function createRouter() {
   return createTanStackRouter({ routeTree })
 }
+
+export const getRouter = createRouter;
 
 declare module '@tanstack/react-router' {
   interface Register {
