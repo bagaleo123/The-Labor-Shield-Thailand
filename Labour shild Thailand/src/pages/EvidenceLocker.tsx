@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Lock, Upload, CircleCheck as CheckCircle, TriangleAlert as AlertTriangle, Clock, FileText, Image, ChevronDown } from 'lucide-react';
+import { Lock, Upload, CheckCircle, AlertTriangle, Clock, FileText, Image, ChevronDown } from 'lucide-react';
 import { useLang } from '../lib/LanguageContext';
 import { supabase } from '../lib/supabase';
 
