@@ -19,7 +19,7 @@ export function createRouter() {
   })
 }
 
-// Это обязательно для TanStack Start
+// КРИТИЧЕСКИ ВАЖНО для TanStack Start
 export const getRouter = createRouter;
 
 declare module '@tanstack/react-router' {
