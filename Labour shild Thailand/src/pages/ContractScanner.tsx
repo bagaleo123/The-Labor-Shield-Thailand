@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { FileSearch, TriangleAlert as AlertTriangle, CircleCheck as CheckCircle, Info, Shield, Clipboard, Upload, Image, FileText, Crown } from 'lucide-react';
+import { FileSearch, AlertTriangle, CheckCircle, Info, Shield, Clipboard, Upload, Image as ImageIcon, Loader2 } from 'lucide-react';
 import { scanContract, type RedFlag } from '../lib/laborLaw';
 import { useLang } from '../lib/LanguageContext';
 import PremiumModal from '../components/PremiumModal';
