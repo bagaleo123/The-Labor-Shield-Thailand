@@ -11,5 +11,7 @@ export default defineConfig({
   ],
   build: {
     outDir: 'dist',
+    // Это важно для Render, чтобы он видел выходные файлы
+    emptyOutDir: true,
   }
 });
