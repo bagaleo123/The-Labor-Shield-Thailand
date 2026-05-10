@@ -2,13 +2,14 @@ import { defineConfig } from "@lovable.dev/vite-tanstack-config";
 
 export default defineConfig({
   tanstackStart: {
-    // Отключаем SSR, чтобы билд прошел для статического сайта Render
+    // ВАЖНО: Мы отключаем SSR полностью, так как на бесплатном Render нет сервера
     ssr: false, 
   },
-  // Убираем конфликт с Cloudflare Wrangler
   vite: {
     build: {
       outDir: 'dist',
+      // Эта настройка поможет избежать ошибок с манифестом
+      emptyOutDir: true,
     }
   }
 });
