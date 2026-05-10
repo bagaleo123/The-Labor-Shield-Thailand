@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { MapPin, Phone, Clock, ChevronDown, Navigation, ExternalLink, TriangleAlert as AlertTriangle, CircleCheck as CheckCircle } from 'lucide-react';
+import { MapPin, Phone, Clock, ChevronDown, Navigation, ExternalLink, AlertTriangle, CheckCircle, Info } from 'lucide-react';
 import { useLang } from '../lib/LanguageContext';
 
 type Office = {
