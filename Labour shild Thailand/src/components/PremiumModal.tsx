@@ -1,5 +1,5 @@
 import { useState, useRef } from 'react';
-import { X, Crown, Upload, CircleCheck as CheckCircle, TriangleAlert as AlertTriangle, Loader as Loader2 } from 'lucide-react';
+import { X, Crown, Upload, CheckCircle, AlertTriangle, Loader2 } from 'lucide-react';
 import { useLang } from '../lib/LanguageContext';
 import { supabase } from '../lib/supabase';
 
